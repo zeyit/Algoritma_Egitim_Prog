@@ -19,6 +19,10 @@ namespace Algoritma
             str_split();
         }
 
+      public Hashtable getHT()
+      {
+          return ht;
+      }
       private void str_split()
        {
            if (degiskenler.LastIndexOf(',') ==0)
@@ -83,7 +87,7 @@ namespace Algoritma
        {
            if (ht.ContainsKey(degiskenName) == true)
            {
-               return (Double)ht[degiskenName];
+               return (Double)(ht[degiskenName]);
            }
            else
            {

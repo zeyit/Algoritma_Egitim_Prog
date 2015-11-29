@@ -17,11 +17,6 @@ namespace Algoritma
              ConsoleMain(args);
          }
 
-        ~Program()
-       {
-           return;
-       }
-
         [STAThread]
        public static void Main(String[] args)
         {

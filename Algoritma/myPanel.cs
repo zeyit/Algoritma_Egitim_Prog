@@ -86,7 +86,7 @@ namespace Algoritma
            {
                Next1 = nesne;
            }
-           else if (this.GetType() ==typeof(Eger))
+           else if (this.GetType() ==typeof(Eger) || this.GetType() == typeof(for_))
            {
                Next2 = nesne;
            }

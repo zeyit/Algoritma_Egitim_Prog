@@ -10,6 +10,7 @@ namespace Algoritma
 {
     class for_:myPanel
     {
+        private bool ilkKontrol;
         public for_(String Name):base(120,40)
         {
             this.Paint += new System.Windows.Forms.PaintEventHandler(myPaint);
@@ -19,7 +20,14 @@ namespace Algoritma
             base.MetinGoruntulensinMi = false;
             base.WHGosterilecekMi = true;
             base.GosterilecekMetin = "For";
-            base.YapilacakIslem = "i=0,i<10,1";
+            base.YapilacakIslem = "i,i<10,1";
+            ilkKontrol = true;
+        }
+
+        public bool IlkKontrol
+        {
+            get { return ilkKontrol; }
+            set { ilkKontrol = value; }
         }
 
         public override void myPaint(object sender, PaintEventArgs e)

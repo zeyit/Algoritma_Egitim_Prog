@@ -443,10 +443,8 @@ namespace Algoritma
              }
              try
              {
-               
                  Thread thread = new Thread(new ThreadStart(aa.Calistir));
                  thread.Start();
-                
              }
              catch (Exception)
              {  }
@@ -460,7 +458,7 @@ namespace Algoritma
              Brush brush = System.Drawing.Brushes.Black; 
              for (int i = 0; i < sekiller.Count; i++)
              {
-                 if ((sekiller[i].GetType() == typeof(Eger)))
+                 if ((sekiller[i].GetType() == typeof(Eger)) || (sekiller[i].GetType() == typeof(for_)))
                  {
                      if (sekiller[i].Next1 != null)
                      {
