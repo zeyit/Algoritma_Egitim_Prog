@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Threading;
 
 namespace Algoritma
 {
@@ -28,6 +29,11 @@ namespace Algoritma
            g.FillEllipse(brush, 0, 0, Width - 3, Height - 3);
            brush = System.Drawing.Brushes.White;
            g.DrawString(panelAdi, new Font("Arial", 10), brush, new Point(this.Width / 2 - 8 * panelAdi.Length / 2, this.Height / 2 - 10));
+        }
+
+        public override void islemYap(Program p)
+        {
+           // Thread.Sleep(1000);
         }
     }
 }

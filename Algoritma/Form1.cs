@@ -19,7 +19,7 @@ namespace Algoritma
         int nesne_count;
         Point nesne_start_position;
         myPanel secili_kontrol, onceki_secilen;
-       public List<myPanel> sekiller;
+        public List<myPanel> sekiller;
         DegiskenListesi degisken_listesi;
         String secilen_nesne_adi;
         AlgoritmaAgaci aa = null;
@@ -422,7 +422,7 @@ namespace Algoritma
 
          private void button1_Click(object sender, EventArgs e)
          {
-             
+            
              try
              {
                  degisken_listesi.clear();
@@ -446,10 +446,7 @@ namespace Algoritma
                
                  Thread thread = new Thread(new ThreadStart(aa.Calistir));
                  thread.Start();
-                 /*
-                  
-                  invocation
-                  */
+                
              }
              catch (Exception)
              {  }

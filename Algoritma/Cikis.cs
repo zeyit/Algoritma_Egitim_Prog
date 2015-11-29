@@ -11,6 +11,7 @@ namespace Algoritma
     {
       private  String panelName = ". . . Çıkış . . .";
       private String degiskenAdi;
+      DegiskenListesi degiskenler = new DegiskenListesi();
 
       public Cikis(String Name) : base(220, 50)
         {
@@ -71,5 +72,26 @@ namespace Algoritma
             g.DrawString(panelName, new Font("Arial", 10), brush, new Point(this.Width / 2 - 5 * panelName.Length / 2, 2));
         }
 
+        public override void islemYap(Algoritma.Program p)
+        {
+            if (this.DegiskenAdi != "")
+            {
+                Double deger = 0.0;
+                try
+                {
+                    deger = degiskenler.Deger(this.DegiskenAdi);
+                }
+                catch (Exception)
+                {
+                    p.ErrWrite("Değişken Tanımlanmamış");
+                }
+
+                p.WriteLine(this.GosterilecekMetin + " ," + deger);
+            }
+            else
+            {
+                p.Write(this.GosterilecekMetin);
+            }
+        }
     }
 }

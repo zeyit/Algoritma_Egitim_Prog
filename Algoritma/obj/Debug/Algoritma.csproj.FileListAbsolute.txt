@@ -1,8 +1,8 @@
-C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Algoritma.exe
-C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Algoritma.pdb
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.Form1.resources
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.Properties.Resources.resources
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.csproj.GenerateResource.Cache
+C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Algoritma.exe
+C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Algoritma.pdb
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.exe
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.pdb
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.csprojResolveAssemblyReference.cache

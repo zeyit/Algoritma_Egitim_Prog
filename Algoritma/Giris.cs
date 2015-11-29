@@ -11,7 +11,7 @@ namespace Algoritma
     {
         private  String panelName = ". . . Giriş . . .";
         private String degiskenAdi;
-
+        DegiskenListesi degiskenler = new DegiskenListesi();
         public Giris(String Name) : base(220, 50)
         {
             this.Paint += new System.Windows.Forms.PaintEventHandler(myPaint);
@@ -23,7 +23,6 @@ namespace Algoritma
             base.GosterilecekMetin="Klavyeden bir sayi giriniz :";
             degiskenAdi = "";
         }
-
 
         public String DegiskenAdi
         {
@@ -68,6 +67,19 @@ namespace Algoritma
             brush = System.Drawing.Brushes.Black;
             g.DrawString(panelName, new Font("Arial", 10), brush, new Point(this.Width / 2 - 5 * panelName.Length / 2, 2));
         }
+        public override void islemYap(Algoritma.Program p)
+        {
+            p.Write(this.GosterilecekMetin + " : ");
 
+            try
+            {
+                double sayi = p.Read();
+                degiskenler.DegiskenDeger(this.DegiskenAdi, sayi);
+            }
+            catch (Exception)
+            {
+                p.ErrWrite("Metinsel ifade girildi");
+            }
+        }
     }
 }
