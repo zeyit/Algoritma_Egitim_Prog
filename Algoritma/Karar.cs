@@ -56,7 +56,7 @@ namespace Algoritma
             }
             else if (karar_metni.IndexOf("=") !=-1)
             {
-                   ifade1 = karar_metni.Substring(0, karar_metni.IndexOf("="));
+                ifade1 = karar_metni.Substring(0, karar_metni.IndexOf("=")); 
                 if (karar_metni.IndexOf("!") != -1)
                 {
                     int start = karar_metni.IndexOf("!");
@@ -71,7 +71,8 @@ namespace Algoritma
                     karar_operant = 5;
                 }
             }
-
+            MessageBox.Show("ifade1 " + ifade1);
+            MessageBox.Show("ifade2 " + ifade2);
             double sayi1 = matematikIslemi(ifade1);
             double sayi2 = matematikIslemi(ifade2);
             if (karar_operant ==0)

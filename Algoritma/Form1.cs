@@ -131,9 +131,7 @@ namespace Algoritma
                 {
                     Cop_pictureBox.Image = Algoritma.Properties.Resources.canclosed;
                 }
-               // Refresh();
-               
-                main_panel.Refresh();
+               main_panel.Refresh();
             }
         }
 
@@ -402,7 +400,7 @@ namespace Algoritma
                  MessageBox.Show("Bağlamak için Nesne seçin !");
              }
            //  MessageBox.Show("onceki secilenname :" + onceki_secilen.Name + " ,seçilen name :" + secili_kontrol.Name);
-             Refresh();
+             main_panel.Refresh();
              
          }
 
@@ -504,8 +502,9 @@ namespace Algoritma
                          g.DrawLine(myPen, N1_x, N1_y, N2_x,N2_y);
                      }
                  }
-                
-             }            
+               
+             }
+             
          }
 
          private void btnfor_Click(object sender, EventArgs e)

@@ -31,7 +31,7 @@ namespace Algoritma
 
         public void Write(String txt)
         {
-            Console.Write(txt);
+            Console.Write(txt +"  ");
         }
         public void WriteLine(String txt)
         {

@@ -29,12 +29,15 @@ namespace Algoritma
             // Start console
             String[] prams = { "console" };
             Program p = new Program(prams);
+            Action actionBorderNone = () => aktif.BorderStyle = BorderStyle.None;
+            Action actionBorderFixed = () => aktif.BorderStyle = BorderStyle.FixedSingle;
             
 
-            while (aktif.GetType() != typeof(Dur) && (aktif.Next1 != null || aktif.Next2 != null))
+            while (aktif != null && aktif.GetType() != typeof(Dur) && (aktif.Next1 != null || aktif.Next2 != null))
             {
                   //  aktif.BorderStyle = BorderStyle.FixedSingle;
-                 // Thread.Sleep(1000);
+                aktif.Invoke(actionBorderFixed);
+                  Thread.Sleep(1000);
                 if (aktif.GetType() == typeof(for_))
                 {
                     for_ f = (for_)aktif;
@@ -65,7 +68,7 @@ namespace Algoritma
                             degiskenler.DegiskenDeger(donguDegisken[0], Convert.ToDouble(donguDegisken[1]));
                         }
                     }
-                   
+                    MessageBox.Show("for kararr");
                     if (karar.mantiksalKarar(parca[1]))
                     {
                         aktif = aktif.Next1;
@@ -75,13 +78,12 @@ namespace Algoritma
                         aktif = aktif.Next2;
                         f.IlkKontrol = true;
                     }
+                    aktif.Invoke(actionBorderNone);
                     continue;
-                }
-               
-                if (aktif.GetType() == typeof(Eger))
+                } else if (aktif.GetType() == typeof(Eger))
                 {
                     Eger eger = (Eger)aktif;
-                    Karar karar = new Karar();
+                    Karar karar = new Karar(); MessageBox.Show("eger kararr");
                     if (karar.mantiksalKarar(eger.YapilacakIslem))
                     {
                         aktif = aktif.Next1;
@@ -91,10 +93,12 @@ namespace Algoritma
                         aktif = aktif.Next2;
                     }
                     //  aktif.BorderStyle = BorderStyle.None;
+                    aktif.Invoke(actionBorderNone);
                     continue;
                 }
                 aktif.islemYap(p);
                // aktif.BorderStyle = BorderStyle.None;
+                aktif.Invoke(actionBorderNone);
                 aktif = aktif.Next1;
             }
             p.WriteLine("Program Bitti.");
