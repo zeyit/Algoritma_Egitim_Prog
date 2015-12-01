@@ -37,7 +37,8 @@ namespace Algoritma
             {
                   //  aktif.BorderStyle = BorderStyle.FixedSingle;
                 aktif.Invoke(actionBorderFixed);
-                  Thread.Sleep(1000);
+                Thread.Sleep(1000);
+                aktif.Invoke(actionBorderNone);
                 if (aktif.GetType() == typeof(for_))
                 {
                     for_ f = (for_)aktif;
@@ -57,18 +58,15 @@ namespace Algoritma
                            
                             p.ErrWrite("işlem hatası oluştu");
                         }
-
                     }
                     else
                     {
-                        
                         f.IlkKontrol = false;
                         if (parca[0].IndexOf('=') != -1)
                         {
                             degiskenler.DegiskenDeger(donguDegisken[0], Convert.ToDouble(donguDegisken[1]));
                         }
                     }
-                    MessageBox.Show("for kararr");
                     if (karar.mantiksalKarar(parca[1]))
                     {
                         aktif = aktif.Next1;
@@ -78,12 +76,11 @@ namespace Algoritma
                         aktif = aktif.Next2;
                         f.IlkKontrol = true;
                     }
-                    aktif.Invoke(actionBorderNone);
                     continue;
                 } else if (aktif.GetType() == typeof(Eger))
                 {
                     Eger eger = (Eger)aktif;
-                    Karar karar = new Karar(); MessageBox.Show("eger kararr");
+                    Karar karar = new Karar();
                     if (karar.mantiksalKarar(eger.YapilacakIslem))
                     {
                         aktif = aktif.Next1;
@@ -92,17 +89,19 @@ namespace Algoritma
                     {
                         aktif = aktif.Next2;
                     }
-                    //  aktif.BorderStyle = BorderStyle.None;
-                    aktif.Invoke(actionBorderNone);
                     continue;
                 }
+                else
+                {
+                    aktif.Invoke(actionBorderFixed);
+                }
+
                 aktif.islemYap(p);
-               // aktif.BorderStyle = BorderStyle.None;
                 aktif.Invoke(actionBorderNone);
                 aktif = aktif.Next1;
             }
             p.WriteLine("Program Bitti.");
-           
+            Form1.SetThread();
            
         }
     }

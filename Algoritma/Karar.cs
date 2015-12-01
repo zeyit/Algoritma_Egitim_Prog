@@ -71,8 +71,6 @@ namespace Algoritma
                     karar_operant = 5;
                 }
             }
-            MessageBox.Show("ifade1 " + ifade1);
-            MessageBox.Show("ifade2 " + ifade2);
             double sayi1 = matematikIslemi(ifade1);
             double sayi2 = matematikIslemi(ifade2);
             if (karar_operant ==0)

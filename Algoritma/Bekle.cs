@@ -34,6 +34,13 @@ namespace Algoritma
         public override void islemYap(Program p)
         {
            // Thread.Sleep(1000);
+            try
+            {
+               Thread.Sleep(Timeout.Infinite);
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

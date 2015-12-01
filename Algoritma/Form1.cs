@@ -14,6 +14,7 @@ namespace Algoritma
 {
     public partial class Form1 : Form
     {
+        static Thread thread;
         bool suruklenme_durumu;
         Point position;
         int nesne_count;
@@ -36,6 +37,11 @@ namespace Algoritma
             sekiller = new List<myPanel>();
             properti_temizleme();
             secilen_nesne_adi = "";
+        }
+
+        public static void SetThread()
+        {
+            thread =null;
         }
 
         public void mp3_play(String url)
@@ -441,7 +447,7 @@ namespace Algoritma
              }
              try
              {
-                 Thread thread = new Thread(new ThreadStart(aa.Calistir));
+                 thread = new Thread(new ThreadStart(aa.Calistir));
                  thread.Start();
              }
              catch (Exception)
@@ -511,6 +517,19 @@ namespace Algoritma
          {
              for_ pnl = new for_("pnl" + Convert.ToString(nesne_count));
              panel_olustur(pnl);
+         }
+
+         private void btnDevamEt_Click(object sender, EventArgs e)
+         {
+             if (thread != null)
+             {
+                 try
+                 {
+                     thread.Interrupt();
+                 }
+                 catch (Exception)
+                 {}
+             }
          }
     }
 }
