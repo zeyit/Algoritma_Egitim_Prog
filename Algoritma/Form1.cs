@@ -10,6 +10,7 @@ using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 
 namespace Algoritma
 {
@@ -34,6 +35,7 @@ namespace Algoritma
         public Form1(String url)
         {
             InitializeComponent();
+            dosyaAc(url);
         }
  
         private void Form1_Load(object sender, EventArgs e)
@@ -291,7 +293,7 @@ namespace Algoritma
              main_panel.Controls.Add(pnl);
              nesne_count++;
              sekiller.Add(pnl);// nesne listesi
-             main_panel.Controls.Add(pnl);
+           //  main_panel.Controls.Add(pnl);
          }
 
          private void btnDugum_Click(object sender, EventArgs e)
@@ -431,36 +433,6 @@ namespace Algoritma
                  }
              }
              return nesne;
-         }
-
-         private void button1_Click(object sender, EventArgs e)
-         {
-            
-             try
-             {
-                 degisken_listesi.clear();
-             }
-             catch (Exception){}
-           
-             for (int i = 0; i < sekiller.Count; i++)
-             {
-                 if (sekiller[i].GetType() ==typeof(Degisken))
-                 {
-                     degisken_listesi.SetDegisken(sekiller[i].YapilacakIslem);
-                 }
-                 if (sekiller[i].GetType() == typeof(Baslat))
-                 {
-                      aa = new AlgoritmaAgaci((Baslat)sekiller[i]);
-                 }
-                 sekiller[i].BorderStyle = BorderStyle.None;
-             }
-             try
-             {
-                 thread = new Thread(new ThreadStart(aa.Calistir));
-                 thread.Start();
-             }
-             catch (Exception)
-             { MessageBox.Show("Programı başlatmak için Başlat eklenmedi.."); }
          }
 
          private void main_panel_Paint(object sender, PaintEventArgs e)
@@ -659,7 +631,7 @@ namespace Algoritma
 
          public void Kaydet()
          {
-             saveFileDialog1.Title = "Kaydetmek için bir ad girin";
+             saveFileDialog1.Title = "Kaydetmek için ad girin";
              saveFileDialog1.Filter = "Metin dosyaları|*.zyd";
              saveFileDialog1.DefaultExt = "zyd";
              if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -667,11 +639,12 @@ namespace Algoritma
                  string dosya_adı;
                  dosya_adı = saveFileDialog1.FileName;
                  System.IO.TextWriter dosya = System.IO.File.CreateText(dosya_adı);
+                 dosya.Write("[");
                  for (int i = 0; i < sekiller.Count; i++)
                  {
                      dosya.Write(NesneBilgileri(sekiller[i]));
                  }
-                 
+                 dosya.Write("]");
                  dosya.Close();
              }
 
@@ -679,48 +652,57 @@ namespace Algoritma
 
          public string NesneBilgileri(myPanel nesne)
          {
-             String jsonData = nesne.GetType().ToString() ;
-             jsonData += "{";
-             jsonData += "Name:"+nesne.Name+",";
-             jsonData += "GosterilecekMetin:" + nesne.GosterilecekMetin + ",";
-             jsonData += "YapilacakIslem:" + nesne.YapilacakIslem + ",";
-             if (nesne.Next1 !=null)
+             JsonNesnem jsondata = new JsonNesnem();
+             jsondata.NesneTipi = nesne.GetType().ToString() ;
+             jsondata.Name = nesne.Name;
+             jsondata.GosterilecekMetin = nesne.GosterilecekMetin;
+             jsondata.YapilacakIslem = nesne.YapilacakIslem;
+             try
              {
-                 jsonData += "Next1:" + nesne.Next1.Name + ",";
+                 jsondata.Next1 = nesne.Next1.Name;
+             }
+             catch (Exception)
+             {
+                 jsondata.Next1 = "";
+             }
+            
+             if (nesne.GetType() == typeof(for_) || nesne.GetType() == typeof(Eger))
+             {
+                 try
+                 {
+                     jsondata.Next2 = nesne.Next2.Name;
+                 }
+                 catch (Exception)
+                 {
+                     jsondata.Next2 = "";
+                 }
+                
              }
              else
              {
-                 jsonData += "Next1:Null,";
+                 jsondata.Next2 = "";
              }
-             if (nesne.Next2 != null)
+            
+             jsondata.Width = nesne.Width;
+             jsondata.Height = nesne.Height;
+             jsondata.Top = nesne.Top;
+             jsondata.Left = nesne.Left;
+             if (nesne.GetType() == typeof(Giris))
              {
-                 jsonData += "Next2:" + nesne.Next2.Name + ",";
-             }
-             else
-             {
-                 jsonData += "Next2:Null,";
-             }
-             jsonData += "Width:" + nesne.Width + ",";
-             jsonData += "Height:" + nesne.Height + ",";
-             jsonData += "Top:" + nesne.Top + ",";
-             jsonData += "Left:" + nesne.Left;
-             if (nesne.GetType() == typeof(Giris)) 
-             {
-                  jsonData += ",DegiskenAdi:" + ((Giris)nesne).DegiskenAdi ;
+                 jsondata.DegiskenAdi = ((Giris)nesne).DegiskenAdi;
 
              }
              else if (nesne.GetType() == typeof(Cikis))
              {
-                 jsonData += ",DegiskenAdi:" + ((Cikis)nesne).DegiskenAdi;
+                 jsondata.DegiskenAdi = ((Cikis)nesne).DegiskenAdi;
              }
              else
              {
-                 jsonData += ",DegiskenAdi:Null";
+                 jsondata.DegiskenAdi = "null";
              }
-
-             jsonData += "}";
-             MessageBox.Show(jsonData);
-             return jsonData;
+             string strjson = JsonConvert.SerializeObject(jsondata)+",";
+           //  MessageBox.Show(strjson);
+             return strjson;
          }
 
          private void btnKaydet_Click(object sender, EventArgs e)
@@ -741,6 +723,7 @@ namespace Algoritma
                          main_panel.Controls.Remove(sekiller[i]);
                      }
                      sekiller.Clear();
+                     main_panel.Refresh();
                  }
                  
              }
@@ -749,16 +732,181 @@ namespace Algoritma
 
          private void btnAc_Click(object sender, EventArgs e)
          {
+             dosyaAc("");
+         }
+       
+         public void dosyaAc(String url)
+         {
              openFileDialog1.Filter = "Metin dosyaları|*.zyd";
              openFileDialog1.Title = "Açılacak dosyayı seçiniz";
-             if (openFileDialog1.ShowDialog() == DialogResult.OK)
+             System.IO.TextReader dosya;
+             string txt="";
+             if (url =="")
              {
-                 string dosya_adi;
-                 dosya_adi = openFileDialog1.FileName;
-                 System.IO.TextReader dosya = System.IO.File.OpenText(dosya_adi);
-                 string x = dosya.ReadToEnd();
+                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                 {
+                     string dosya_adi;
+                     dosya_adi = openFileDialog1.FileName;
+                     dosya = System.IO.File.OpenText(dosya_adi);
+                     txt = dosya.ReadToEnd();
+                     dosya.Close();
+                 }
+             }
+             else
+             {
+                  dosya = System.IO.File.OpenText(url);
+                  txt = dosya.ReadToEnd();
                  dosya.Close();
-                //verile üzerinde işlem yapma
+             }
+             //verile üzerinde işlem yapma
+             NesneleriYukle(txt);
+         }
+
+         public void NesneleriYukle(String txt)
+         {
+             var liste = JsonConvert.DeserializeObject<JsonNesnem[]>(txt);
+
+             for (int i = 0; i < liste.Length; i++)
+             {
+                 myPanel panel = nesneOlustur(liste[i].NesneTipi,liste[i].Name) ;
+                 panel.GosterilecekMetin = liste[i].GosterilecekMetin;
+                 panel.YapilacakIslem = liste[i].YapilacakIslem;
+                 // next1 ve next2 tüm nesneler olutuktan sonra bağlanacak
+                 panel.Width = liste[i].Width;
+                 panel.Height = liste[i].Height;
+                 panel.Top = liste[i].Top;
+                 panel.Left = liste[i].Left;
+                 if (panel.GetType() == typeof(Giris))
+                 {
+                     ((Giris)panel).DegiskenAdi = liste[i].DegiskenAdi;
+                 }
+                 else if ( panel.GetType() == typeof (Cikis))
+                 {
+                      ((Cikis)panel).DegiskenAdi = liste[i].DegiskenAdi;
+                 }
+                 panel.Click += new EventHandler(btn_Click);
+                 panel.MouseDown += new MouseEventHandler(Mouse_Down);
+                 panel.MouseMove += new MouseEventHandler(Mouse_Move);
+                 panel.MouseUp += new MouseEventHandler(Mouse_Up);
+                 main_panel.Controls.Add(panel);
+                 sekiller.Add(panel);
+                 nesne_count++;
+             }
+             
+             for (int i = 0; i < sekiller.Count; i++)
+             {
+                 for (int j = 0; j < liste.Length; j++)
+                 {
+
+                     if (sekiller[i].Name == liste[j].Next1)
+                     {
+                         getNesne(liste[j].Name).Next1 = sekiller[i];
+                        // sekiller[i].Next1 =sekiller[j];
+                     }
+                     if (sekiller[i].Name == liste[j].Next2)
+                     {
+                         getNesne(liste[j].Name).Next2 = sekiller[i];
+                        // sekiller[i].Next2 = sekiller[j];
+                     }
+                 }
+             }
+             main_panel.Refresh();
+             degisken_listesi = new DegiskenListesi();
+         }
+
+         public myPanel nesneOlustur(string nesneTipi,String name)
+         {
+             myPanel yeniNesne=null;
+            
+             if (nesneTipi == typeof(Baslat).ToString())
+             {
+                 yeniNesne = new Baslat(name);
+             }
+             else if (nesneTipi ==typeof(Degisken).ToString())
+             {
+                 yeniNesne = new Degisken(name);
+             }
+             else if (nesneTipi == typeof(Islem).ToString())
+             {
+                 yeniNesne = new Islem(name);
+             }
+             else if (nesneTipi == typeof(Giris).ToString())
+             {
+                 yeniNesne = new Giris(name);
+             }
+             else if (nesneTipi == typeof(for_).ToString())
+             {
+                 yeniNesne = new for_(name);
+             }
+             else if (nesneTipi == typeof(Eger).ToString())
+             {
+                 yeniNesne = new Eger(name);
+             }
+             else if (nesneTipi == typeof(Cikis).ToString())
+             {
+                 yeniNesne = new Cikis(name);
+             }
+             else if (nesneTipi == typeof(Bekle).ToString())
+             {
+                 yeniNesne = new Bekle(name);
+             }
+             else if (nesneTipi == typeof(Dugum).ToString())
+             {
+                 yeniNesne = new Dugum(name);
+             }
+             else if (nesneTipi == typeof(Dur).ToString())
+             {
+                 yeniNesne = new Dur(name);
+             }
+
+
+             return yeniNesne;
+         }
+
+         private void trackBarHiz_Scroll(object sender, EventArgs e)
+         {
+             lblHiz.Text = trackBarHiz.Value + "ms";
+         }
+
+         private void btnRun_Click(object sender, EventArgs e)
+         {
+             try
+             {
+                 degisken_listesi.clear();
+             }
+             catch (Exception) { }
+
+             for (int i = 0; i < sekiller.Count; i++)
+             {
+                 if (sekiller[i].GetType() == typeof(Degisken))
+                 {
+                     degisken_listesi.SetDegisken(sekiller[i].YapilacakIslem);
+                 }
+                 if (sekiller[i].GetType() == typeof(Baslat))
+                 {
+                     aa = new AlgoritmaAgaci((Baslat)sekiller[i]);
+                 }
+                 sekiller[i].BorderStyle = BorderStyle.None;
+             }
+             try
+             {
+                 int hiz = trackBarHiz.Value;
+                 thread = new Thread(() => aa.Calistir(hiz));
+                 thread.Start();
+             }
+             catch (Exception)
+             { MessageBox.Show("Programı başlatmak için Başlat eklenmedi.."); }
+         }
+
+         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+         {
+             if (sekiller.Count > 0)
+             {
+                 DialogResult dialog = MessageBox.Show("Yapılan değişiklikle kaydedilsin mi?", "", MessageBoxButtons.YesNo);
+                 if (dialog == DialogResult.Yes)
+                 {
+                     Kaydet();
+                 }
              }
          }
     }

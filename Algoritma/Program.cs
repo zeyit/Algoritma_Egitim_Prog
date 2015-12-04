@@ -14,11 +14,6 @@ namespace Algoritma
         /// </summary>
         /// 
 
-        const string className = ".zyd";
-        const string regIdentifier = "myOwnExt";
-        static string applicationPath = @Application.StartupPath;
-        static string iconPath = @Application.StartupPath + "algoritma.ico";
-
        public  Program(String[] args)
          {
              AllocConsole();
@@ -68,7 +63,9 @@ namespace Algoritma
 
         public void ErrWrite(String txt)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(txt);//
+            Console.ForegroundColor = ConsoleColor.Black;
             
         }
 

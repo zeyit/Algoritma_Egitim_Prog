@@ -17,7 +17,7 @@ namespace Algoritma
             this.baslat = baslat;
         }
 
-        public void Calistir()
+        public void Calistir(int hiz)
         {
             myPanel aktif = baslat;
             DegiskenListesi degiskenler = new DegiskenListesi();
@@ -38,7 +38,7 @@ namespace Algoritma
             {
                   //  aktif.BorderStyle = BorderStyle.FixedSingle;
                 aktif.Invoke(actionBorderFixed);
-                Thread.Sleep(1000);
+                Thread.Sleep(hiz);
                 aktif.Invoke(actionBorderNone);
                 if (aktif.GetType() == typeof(for_))
                 {
