@@ -30,7 +30,6 @@ namespace Algoritma
             set { degiskenAdi = value; }
         }
 
-
         public override void myPaint(object sender, PaintEventArgs e)
         {
             String mGosterilecekMetin = "";

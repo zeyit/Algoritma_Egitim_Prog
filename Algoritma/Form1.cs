@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Win32;
 
 namespace Algoritma
 {
@@ -29,9 +30,15 @@ namespace Algoritma
         {
             InitializeComponent();
         }
+
+        public Form1(String url)
+        {
+            InitializeComponent();
+        }
  
         private void Form1_Load(object sender, EventArgs e)
         {
+           
             nesne_count = 0;
             nesne_start_position = new Point(250, 50);
             sekiller = new List<myPanel>();
@@ -50,7 +57,7 @@ namespace Algoritma
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
             player.SoundLocation = @Application.StartupPath + url;// MessageBox.Show("" + Application.StartupPath + "delete.mp3");
             player.Play();
-
+            
         }
 
         private void btnBaslat_Click(object sender, EventArgs e)
@@ -137,6 +144,7 @@ namespace Algoritma
                 {
                     Cop_pictureBox.Image = Algoritma.Properties.Resources.canclosed;
                 }
+
                main_panel.Refresh();
             }
         }
@@ -176,6 +184,7 @@ namespace Algoritma
                 {}
             }  
             Cop_pictureBox.Image = Algoritma.Properties.Resources.canclosed;
+            main_panel.Refresh();
         }
 
          void Degisken_Kontrol()
@@ -451,16 +460,16 @@ namespace Algoritma
                  thread.Start();
              }
              catch (Exception)
-             {  }
+             { MessageBox.Show("Programı başlatmak için Başlat eklenmedi.."); }
          }
 
          private void main_panel_Paint(object sender, PaintEventArgs e)
          {
              Graphics g = e.Graphics;
              
-             Pen myPen = new Pen(System.Drawing.Color.Red, 2);
+             Pen myPen = new Pen(System.Drawing.Color.Red, 3);
              Brush brush = System.Drawing.Brushes.Black; 
-             for (int i = 0; i < sekiller.Count; i++)
+            /* for (int i = 0; i < sekiller.Count; i++)
              {
                  if ((sekiller[i].GetType() == typeof(Eger)) || (sekiller[i].GetType() == typeof(for_)))
                  {
@@ -509,6 +518,122 @@ namespace Algoritma
                      }
                  }
                
+             }*/
+             for (int i = 0; i < sekiller.Count; i++)
+             {      
+                 Point nokta1, nokta2, nokta3;
+                     nokta1 = new Point();
+                     nokta2 = new Point();
+                     nokta3 = new Point();
+                 if (sekiller[i].Next1 != null)
+                 {
+                     if (sekiller[i].Left < sekiller[i].Next1.Left && sekiller[i].Top > sekiller[i].Next1.Top)
+                     {
+                         nokta1.X = (sekiller[i].Left + sekiller[i].Width/2);
+                         nokta1.Y = (sekiller[i].Top);
+                         nokta2.X = nokta1.X;
+                         nokta2.Y = (sekiller[i].Next1.Top +sekiller[i].Next1.Height/2 );
+
+                         nokta3.X = (sekiller[i].Next1.Left);
+                         nokta3.Y = nokta2.Y;
+                     }
+                     else if (sekiller[i].Left < sekiller[i].Next1.Left && sekiller[i].Top < sekiller[i].Next1.Top)
+                     {
+                         nokta1.X = (sekiller[i].Left + sekiller[i].Width);
+                         nokta1.Y = (sekiller[i].Top + sekiller[i].Height/2);
+                         nokta2.X = (sekiller[i].Next1.Left+sekiller[i].Next1.Width / 2);
+                         nokta2.Y = nokta1.Y;
+
+                         nokta3.X = nokta2.X;
+                         nokta3.Y = (sekiller[i].Next1.Top);
+                     }
+                     else if (sekiller[i].Left > sekiller[i].Next1.Left && sekiller[i].Top < sekiller[i].Next1.Top)
+                     {
+                         nokta1.X = (sekiller[i].Left + sekiller[i].Width/2);
+                         nokta1.Y = (sekiller[i].Top + sekiller[i].Height);
+                         nokta2.X = nokta1.X; 
+                         nokta2.Y = (sekiller[i].Next1.Top+sekiller[i].Next1.Height/2);
+
+                         nokta3.X = (sekiller[i].Next1.Left + sekiller[i].Next1.Width);
+                         nokta3.Y = nokta2.Y;
+
+                     }
+                     else if (sekiller[i].Left > sekiller[i].Next1.Left && sekiller[i].Top > sekiller[i].Next1.Top)
+                     {
+                         nokta1.X = (sekiller[i].Left);
+                         nokta1.Y = (sekiller[i].Top + sekiller[i].Height/2);
+                         nokta2.X = (sekiller[i].Next1.Left + sekiller[i].Next1.Width / 2);
+                         nokta2.Y = nokta1.Y ;
+
+                         nokta3.X = nokta2.X;
+                         nokta3.Y = (sekiller[i].Next1.Top + sekiller[i].Next1.Height);
+                     }
+
+                     if (sekiller[i].GetType() == typeof(for_) || sekiller[i].GetType() == typeof(Eger) )
+                     {
+                          g.DrawString("E", new Font("Arial", 12), brush,new Point((nokta1.X+nokta2.X)/2 ,(nokta1.Y+nokta2.Y)/2));
+                     }
+                     g.DrawLine(myPen, nokta1, nokta2);
+                     g.DrawLine(myPen, nokta3, nokta2);
+
+                 }
+
+                 if (sekiller[i].GetType() == typeof(for_) || sekiller[i].GetType() == typeof(Eger))
+                 {
+                     if (sekiller[i].Next2 !=null)
+                     {
+                         //-------------------------------------------
+                         if (sekiller[i].Left < sekiller[i].Next2.Left && sekiller[i].Top > sekiller[i].Next2.Top)
+                         {
+                             nokta1.X = (sekiller[i].Left + sekiller[i].Width / 2);
+                             nokta1.Y = (sekiller[i].Top);
+                             nokta1.X +=15;
+                             nokta2.X = nokta1.X;
+                             nokta2.Y = (sekiller[i].Next2.Top + sekiller[i].Next2.Height / 2);
+
+                             nokta3.X = (sekiller[i].Next2.Left);
+                             nokta3.Y = nokta2.Y;
+                         }
+                         else if (sekiller[i].Left < sekiller[i].Next2.Left && sekiller[i].Top < sekiller[i].Next2.Top)
+                         {
+                             nokta1.X = (sekiller[i].Left + sekiller[i].Width);
+                             nokta1.Y = (sekiller[i].Top + sekiller[i].Height / 2);
+                             nokta1.Y += 10;
+                             nokta2.X = (sekiller[i].Next2.Left + sekiller[i].Next2.Width / 2);
+                             nokta2.Y = nokta1.Y;
+
+                             nokta3.X = nokta2.X;
+                             nokta3.Y = (sekiller[i].Next2.Top);
+                         }
+                         else if (sekiller[i].Left > sekiller[i].Next2.Left && sekiller[i].Top < sekiller[i].Next2.Top)
+                         {
+                             nokta1.X = (sekiller[i].Left + sekiller[i].Width / 2);
+                             nokta1.Y = (sekiller[i].Top + sekiller[i].Height);
+                             nokta1.X -= 10;
+                             nokta2.X = nokta1.X;
+                             nokta2.Y = (sekiller[i].Next2.Top + sekiller[i].Next2.Height / 2);
+
+                             nokta3.X = (sekiller[i].Next2.Left + sekiller[i].Next2.Width);
+                             nokta3.Y = nokta2.Y;
+
+                         }
+                         else if (sekiller[i].Left > sekiller[i].Next2.Left && sekiller[i].Top > sekiller[i].Next2.Top)
+                         {
+                             nokta1.X = (sekiller[i].Left);
+                             nokta1.Y = (sekiller[i].Top + sekiller[i].Height / 2);
+                       
+                             nokta1.Y -= 10;
+                             nokta2.X = (sekiller[i].Next2.Left + sekiller[i].Next2.Width / 2);
+                             nokta2.Y = nokta1.Y;
+
+                             nokta3.X = nokta2.X;
+                             nokta3.Y = (sekiller[i].Next2.Top + sekiller[i].Next2.Height);
+                         }
+
+                         g.DrawLine(myPen, nokta1, nokta2);
+                         g.DrawLine(myPen, nokta3, nokta2);
+                     }
+                 }
              }
              
          }
@@ -529,6 +654,111 @@ namespace Algoritma
                  }
                  catch (Exception)
                  {}
+             }
+         }
+
+         public void Kaydet()
+         {
+             saveFileDialog1.Title = "Kaydetmek için bir ad girin";
+             saveFileDialog1.Filter = "Metin dosyaları|*.zyd";
+             saveFileDialog1.DefaultExt = "zyd";
+             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+             {
+                 string dosya_adı;
+                 dosya_adı = saveFileDialog1.FileName;
+                 System.IO.TextWriter dosya = System.IO.File.CreateText(dosya_adı);
+                 for (int i = 0; i < sekiller.Count; i++)
+                 {
+                     dosya.Write(NesneBilgileri(sekiller[i]));
+                 }
+                 
+                 dosya.Close();
+             }
+
+         }
+
+         public string NesneBilgileri(myPanel nesne)
+         {
+             String jsonData = nesne.GetType().ToString() ;
+             jsonData += "{";
+             jsonData += "Name:"+nesne.Name+",";
+             jsonData += "GosterilecekMetin:" + nesne.GosterilecekMetin + ",";
+             jsonData += "YapilacakIslem:" + nesne.YapilacakIslem + ",";
+             if (nesne.Next1 !=null)
+             {
+                 jsonData += "Next1:" + nesne.Next1.Name + ",";
+             }
+             else
+             {
+                 jsonData += "Next1:Null,";
+             }
+             if (nesne.Next2 != null)
+             {
+                 jsonData += "Next2:" + nesne.Next2.Name + ",";
+             }
+             else
+             {
+                 jsonData += "Next2:Null,";
+             }
+             jsonData += "Width:" + nesne.Width + ",";
+             jsonData += "Height:" + nesne.Height + ",";
+             jsonData += "Top:" + nesne.Top + ",";
+             jsonData += "Left:" + nesne.Left;
+             if (nesne.GetType() == typeof(Giris)) 
+             {
+                  jsonData += ",DegiskenAdi:" + ((Giris)nesne).DegiskenAdi ;
+
+             }
+             else if (nesne.GetType() == typeof(Cikis))
+             {
+                 jsonData += ",DegiskenAdi:" + ((Cikis)nesne).DegiskenAdi;
+             }
+             else
+             {
+                 jsonData += ",DegiskenAdi:Null";
+             }
+
+             jsonData += "}";
+             MessageBox.Show(jsonData);
+             return jsonData;
+         }
+
+         private void btnKaydet_Click(object sender, EventArgs e)
+         {
+             Kaydet();
+         }
+
+         private void btnYeni_Click(object sender, EventArgs e)
+         {
+             if (sekiller.Count > 0)
+             {
+                 DialogResult dialog = MessageBox.Show("Yapılan değişiklikle silinsinmi?", "", MessageBoxButtons.YesNo);
+                 if (dialog ==DialogResult.Yes)
+                 {
+                     for (int i = 0; i < sekiller.Count; i++)
+                     {
+                        // sekiller[i].Visible = false;
+                         main_panel.Controls.Remove(sekiller[i]);
+                     }
+                     sekiller.Clear();
+                 }
+                 
+             }
+             
+         }
+
+         private void btnAc_Click(object sender, EventArgs e)
+         {
+             openFileDialog1.Filter = "Metin dosyaları|*.zyd";
+             openFileDialog1.Title = "Açılacak dosyayı seçiniz";
+             if (openFileDialog1.ShowDialog() == DialogResult.OK)
+             {
+                 string dosya_adi;
+                 dosya_adi = openFileDialog1.FileName;
+                 System.IO.TextReader dosya = System.IO.File.OpenText(dosya_adi);
+                 string x = dosya.ReadToEnd();
+                 dosya.Close();
+                //verile üzerinde işlem yapma
              }
          }
     }

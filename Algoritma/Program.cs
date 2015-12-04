@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+//using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,6 +13,12 @@ namespace Algoritma
         /// The main entry point for the application.
         /// </summary>
         /// 
+
+        const string className = ".zyd";
+        const string regIdentifier = "myOwnExt";
+        static string applicationPath = @Application.StartupPath;
+        static string iconPath = @Application.StartupPath + "algoritma.ico";
+
        public  Program(String[] args)
          {
              AllocConsole();
@@ -20,9 +28,29 @@ namespace Algoritma
         [STAThread]
        public static void Main(String[] args)
         {
+
+            try
+            {   
+                Registry.ClassesRoot.CreateSubKey(".zyd").SetValue(null, "AlgoritmaDosyasi");
+                RegistryKey rk = Registry.ClassesRoot.CreateSubKey(".zyd");
+                rk.CreateSubKey("DefaultIcon").SetValue(null, (Application.StartupPath).ToLower() + "\\algoritma.ico");
+                rk.CreateSubKey(@"Shell\Open\Command").SetValue(null, "\"" + Application.ExecutablePath + "\" \"%1\"");
+                rk.Close();
+            }
+            catch (Exception)
+            { }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            if (args.Length > 0)
+            {
+                Application.Run(new Form1(args[0]));
+            }
+            else
+            {
+                Application.Run(new Form1());
+            }
+            
         }
         private static void ConsoleMain(string[] args)
         {
@@ -51,5 +79,6 @@ namespace Algoritma
 
         [System.Runtime.InteropServices.DllImport("kernel32.dll")]
         private static extern bool AllocConsole();
+     
     }
 }

@@ -28,6 +28,7 @@ namespace Algoritma
             }
             // Start console
             String[] prams = { "console" };
+        
             Program p = new Program(prams);
             Action actionBorderNone = () => aktif.BorderStyle = BorderStyle.None;
             Action actionBorderFixed = () => aktif.BorderStyle = BorderStyle.FixedSingle;
@@ -103,6 +104,11 @@ namespace Algoritma
             p.WriteLine("Program Bitti.");
             Form1.SetThread();
            
+        }
+
+        public void Kaydet()
+        {
+
         }
     }
 }
