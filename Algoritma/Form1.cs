@@ -26,7 +26,7 @@ namespace Algoritma
         DegiskenListesi degisken_listesi;
         String secilen_nesne_adi;
         AlgoritmaAgaci aa = null;
-
+        String SecilenDosyaUrl="";
         public Form1()
         {
             InitializeComponent();
@@ -35,17 +35,20 @@ namespace Algoritma
         public Form1(String url)
         {
             InitializeComponent();
-            dosyaAc(url);
+            SecilenDosyaUrl = url;
         }
  
         private void Form1_Load(object sender, EventArgs e)
         {
-           
             nesne_count = 0;
             nesne_start_position = new Point(250, 50);
             sekiller = new List<myPanel>();
             properti_temizleme();
             secilen_nesne_adi = "";
+            if (SecilenDosyaUrl != "")
+            {
+                dosyaAc(SecilenDosyaUrl);
+            }
         }
 
         public static void SetThread()
@@ -902,7 +905,7 @@ namespace Algoritma
          {
              if (sekiller.Count > 0)
              {
-                 DialogResult dialog = MessageBox.Show("Yapılan değişiklikle kaydedilsin mi?", "", MessageBoxButtons.YesNo);
+                 DialogResult dialog = MessageBox.Show("Yapılan değişiklikleri kaydedmek istermisiniz?", "", MessageBoxButtons.YesNo);
                  if (dialog == DialogResult.Yes)
                  {
                      Kaydet();

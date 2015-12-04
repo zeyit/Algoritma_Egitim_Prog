@@ -66,7 +66,6 @@ namespace Algoritma
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(txt);//
             Console.ForegroundColor = ConsoleColor.Black;
-            
         }
 
         public double Read()

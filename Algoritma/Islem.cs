@@ -39,7 +39,7 @@ namespace Algoritma
                 String islem_ifadesi = this.YapilacakIslem;
                 String[] array = islem_ifadesi.Split('=');
                 Karar islem_yap = new Karar();
-                Double sonuc = islem_yap.islemYap(array[1]);
+                Double sonuc = islem_yap.matematikIslemi(array[1]);
                 String degisken = array[0];
                 degisken = degisken.Trim();
                 degiskenler.DegiskenDeger(degisken, sonuc);

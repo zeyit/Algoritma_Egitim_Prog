@@ -32,11 +32,9 @@ namespace Algoritma
             Program p = new Program(prams);
             Action actionBorderNone = () => aktif.BorderStyle = BorderStyle.None;
             Action actionBorderFixed = () => aktif.BorderStyle = BorderStyle.FixedSingle;
-            
 
             while (aktif != null && aktif.GetType() != typeof(Dur) && (aktif.Next1 != null || aktif.Next2 != null))
             {
-                  //  aktif.BorderStyle = BorderStyle.FixedSingle;
                 aktif.Invoke(actionBorderFixed);
                 Thread.Sleep(hiz);
                 aktif.Invoke(actionBorderNone);
@@ -51,7 +49,7 @@ namespace Algoritma
                         //i artırma işlemi
                         try
                         {
-                            double sonuc = karar.islemYap(donguDegisken[0] + "+" + parca[2]);
+                            double sonuc = karar.matematikIslemi(donguDegisken[0] + "+" + parca[2]);
                             degiskenler.DegiskenDeger(donguDegisken[0], sonuc);
                         }
                         catch (Exception)
@@ -103,12 +101,7 @@ namespace Algoritma
             }
             p.WriteLine("Program Bitti.");
             Form1.SetThread();
-           
         }
 
-        public void Kaydet()
-        {
-
-        }
     }
 }
