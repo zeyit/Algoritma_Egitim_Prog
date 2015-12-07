@@ -25,8 +25,9 @@ namespace Algoritma
         public List<myPanel> sekiller;
         DegiskenListesi degisken_listesi;
         String secilen_nesne_adi;
-        AlgoritmaAgaci aa = null;
         String SecilenDosyaUrl="";
+        DegiskenPenceresi dp;
+
         public Form1()
         {
             InitializeComponent();
@@ -621,6 +622,7 @@ namespace Algoritma
 
          private void btnDevamEt_Click(object sender, EventArgs e)
          {
+           
              if (thread != null)
              {
                  try
@@ -722,7 +724,6 @@ namespace Algoritma
                  {
                      for (int i = 0; i < sekiller.Count; i++)
                      {
-                        // sekiller[i].Visible = false;
                          main_panel.Controls.Remove(sekiller[i]);
                      }
                      sekiller.Clear();
@@ -861,6 +862,10 @@ namespace Algoritma
              {
                  yeniNesne = new Dur(name);
              }
+             else if (nesneTipi == typeof(DegiskenIzle).ToString())
+             {
+                 yeniNesne = new DegiskenIzle(name);
+             }
 
 
              return yeniNesne;
@@ -873,6 +878,8 @@ namespace Algoritma
 
          private void btnRun_Click(object sender, EventArgs e)
          {
+             AlgoritmaAgaci aa = null;
+             bool isDegiskenIzle = false;
              try
              {
                  degisken_listesi.clear();
@@ -889,17 +896,35 @@ namespace Algoritma
                  {
                      aa = new AlgoritmaAgaci((Baslat)sekiller[i]);
                  }
+                 if (sekiller[i].GetType() ==typeof(DegiskenIzle))
+                 {
+                     isDegiskenIzle = true;
+                     if (dp == null)
+                     {
+                          dp = new DegiskenPenceresi();
+                          dp.Show();
+                     }
+                     else
+                     {
+                         dp.dgvDegiskenler.Rows.Clear();
+                         dp.dgvDegiskenler.Columns.Clear();
+
+                     }
+
+                 }
                  sekiller[i].BorderStyle = BorderStyle.None;
              }
              try
              {
                  int hiz = trackBarHiz.Value;
-                 thread = new Thread(() => aa.Calistir(hiz));
+                 thread = new Thread(() => aa.Calistir(hiz, isDegiskenIzle,dp));
                  thread.Start();
+                
              }
-             catch (Exception)
-             { MessageBox.Show("Programı başlatmak için Başlat eklenmedi.."); }
+             catch (Exception ex)
+             { MessageBox.Show("Programı başlatmak için Başlat eklenmedi.."+ex); }
          }
+
 
          private void Form1_FormClosing(object sender, FormClosingEventArgs e)
          {
@@ -911,6 +936,12 @@ namespace Algoritma
                      Kaydet();
                  }
              }
+         }
+
+         private void btnDegiskenIzle_Click(object sender, EventArgs e)
+         {
+             DegiskenIzle pnl = new DegiskenIzle("pnl" + Convert.ToString(nesne_count));
+             panel_olustur(pnl);
          }
     }
 }

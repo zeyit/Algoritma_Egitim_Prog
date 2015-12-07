@@ -104,7 +104,16 @@
     <Compile Include="Degisken.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DegiskenIzle.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DegiskenListesi.cs" />
+    <Compile Include="DegiskenPenceresi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DegiskenPenceresi.Designer.cs">
+      <DependentUpon>DegiskenPenceresi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dugum.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -136,6 +145,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DegiskenPenceresi.resx">
+      <DependentUpon>DegiskenPenceresi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +203,7 @@
     <None Include="Resources\degisken2.PNG" />
     <None Include="Resources\cikis1.PNG" />
     <None Include="Resources\bekle.PNG" />
+    <None Include="Resources\degiskenIzle.PNG" />
     <Content Include="Resources\delete.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

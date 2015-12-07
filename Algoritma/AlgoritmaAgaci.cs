@@ -17,7 +17,7 @@ namespace Algoritma
             this.baslat = baslat;
         }
 
-        public void Calistir(int hiz)
+        public void Calistir(int hiz,bool isDegiskenIzle,DegiskenPenceresi dp)
         {
             myPanel aktif = baslat;
             DegiskenListesi degiskenler = new DegiskenListesi();
@@ -26,6 +26,9 @@ namespace Algoritma
             {
                 ht[key] = degiskenler.Deger(key) ;
             }
+            //degisken izle
+            int degisken_satir = 0;
+
             // Start console
             String[] prams = { "console" };
         
@@ -45,8 +48,7 @@ namespace Algoritma
                     String[] parca = f.YapilacakIslem.Split(',');
                     string[] donguDegisken = parca[0].Split('=');
                     if (!f.IlkKontrol)
-                    {
-                        //i artırma işlemi
+                    { //i artırma işlemi
                         try
                         {
                             double sonuc = karar.matematikIslemi(donguDegisken[0] + "+" + parca[2]);
@@ -54,7 +56,6 @@ namespace Algoritma
                         }
                         catch (Exception)
                         {
-                           
                             p.ErrWrite("işlem hatası oluştu");
                         }
                     }
@@ -89,6 +90,40 @@ namespace Algoritma
                         aktif = aktif.Next2;
                     }
                     continue;
+                }
+                else if (aktif.GetType() == typeof(DegiskenIzle))
+                {
+                    DegiskenIzle di = (DegiskenIzle)aktif;
+                    String degisken = di.YapilacakIslem;
+                    string[] degisken_deger;
+                    if (degisken.LastIndexOf(',') == 0)
+                    {
+                        degisken = degisken.Substring(0, degisken.Length - 1);
+                    }
+                    degisken_deger = degisken.Split(',');
+                    Action satirEkle = () => { dp.PencereSatirEkle(); };
+                    if (di.IlkKontrol)
+                    {  
+                       for (int i = 0; i < degisken_deger.Length; i++)
+                       {
+                           Action ekle = () => { dp.ColumsAdd(degisken_deger[i]); };
+
+                           dp.Invoke(ekle);
+                       }
+                       di.IlkKontrol = false;
+                    }
+                    
+                    dp.Invoke(satirEkle);
+                    for (int i = 0; i < degisken_deger.Length; i++)
+                    {
+                        try
+                        {
+                            Action degerEkle = () =>dp.PencereDegerEkle(degisken_satir, i, degiskenler.Deger(degisken_deger[i]).ToString());
+                            dp.Invoke(degerEkle);
+                        }
+                        catch (Exception) { }
+                    }
+                    degisken_satir++;
                 }
                 else
                 {

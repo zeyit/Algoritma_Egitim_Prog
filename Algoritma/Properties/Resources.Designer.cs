@@ -193,6 +193,16 @@ namespace Algoritma.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap degiskenIzle {
+            get {
+                object obj = ResourceManager.GetObject("degiskenIzle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dugum {
             get {
                 object obj = ResourceManager.GetObject("dugum", resourceCulture);

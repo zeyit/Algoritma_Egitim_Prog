@@ -15,7 +15,6 @@ namespace Algoritma
         public bool mantiksalKarar(String mantiksal_ifade)
         {
             string karar_metni = ifade_temizle(mantiksal_ifade);
-            MessageBox.Show(karar_metni);
             dynamic result = engine.Execute(karar_metni);     
             return result;
         }

@@ -5,7 +5,6 @@ C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debu
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.exe
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.pdb
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Algoritma.pdb
-C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.csprojResolveAssemblyReference.cache
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\IronPython.dll
@@ -24,3 +23,5 @@ C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debu
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Microsoft.Scripting.xml
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Microsoft.Scripting.AspNet.xml
 C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\bin\Debug\Microsoft.Scripting.Metadata.xml
+C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.DegiskenPenceresi.resources
+C:\Users\Said\Documents\Visual Studio 2012\Projects\Algoritma\Algoritma\obj\Debug\Algoritma.csprojResolveAssemblyReference.cache

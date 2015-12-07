@@ -136,9 +136,6 @@
   <data name="run2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\run2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="degisken1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\degisken1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="for" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\for.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,14 +154,20 @@
   <data name="bekle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bekle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="eger1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eger1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="degisken" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\degisken.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="giris" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\giris.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dur1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dur1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="degisken1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\degisken1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="eger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eger.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,8 +184,8 @@
   <data name="dur" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dur.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eger1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eger1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dur1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dur1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="islem" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\islem.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,7 +193,7 @@
   <data name="canopen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\canopen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="new" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="degiskenIzle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\degiskenIzle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
