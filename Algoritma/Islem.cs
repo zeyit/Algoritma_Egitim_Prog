@@ -32,7 +32,7 @@ namespace Algoritma
             g.DrawString(islem, new Font("Arial", 10), brush, new Point(this.Width/2-7*islem.Length/2, this.Height/2-8));
         }
 
-        public override void islemYap(Program p)
+        public override void islemYap(frmConsole p)
         {
             try
             {

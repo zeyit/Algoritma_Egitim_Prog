@@ -66,16 +66,14 @@ namespace Algoritma
             brush = System.Drawing.Brushes.Black;
             g.DrawString(panelName, new Font("Arial", 10), brush, new Point(this.Width / 2 - 5 * panelName.Length / 2, 2));
         }
-        public override void islemYap(Algoritma.Program p)
+        public override void islemYap(frmConsole p)
         {
-            p.Write(this.GosterilecekMetin + " : ");
-
             try
             {
-                double sayi = p.Read();
+                double sayi = p.Read(this.GosterilecekMetin);
                 degiskenler.DegiskenDeger(this.DegiskenAdi, sayi);
             }
-            catch (Exception)
+           catch (Exception)
             {
                 p.ErrWrite("Metinsel ifade girildi");
             }

@@ -72,7 +72,7 @@ namespace Algoritma
             g.DrawString(panelName, new Font("Arial", 10), brush, new Point(this.Width / 2 - 5 * panelName.Length / 2, 2));
         }
 
-        public override void islemYap(Algoritma.Program p)
+        public override void islemYap(frmConsole p)
         {
             if (this.DegiskenAdi != "")
             {

@@ -52,15 +52,8 @@
             this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cop_panel = new System.Windows.Forms.Panel();
-            this.tools_panel = new System.Windows.Forms.Panel();
-            this.top_panel = new System.Windows.Forms.Panel();
-            this.lblHiz = new System.Windows.Forms.Label();
-            this.trackBarHiz = new System.Windows.Forms.TrackBar();
-            this.btnAc = new System.Windows.Forms.Button();
-            this.btnDevamEt = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.Cop_pictureBox = new System.Windows.Forms.PictureBox();
+            this.tools_panel = new System.Windows.Forms.Panel();
             this.btnDegiskenIzle = new System.Windows.Forms.Button();
             this.btnfor = new System.Windows.Forms.Button();
             this.btnDur = new System.Windows.Forms.Button();
@@ -72,9 +65,16 @@
             this.btnIslem = new System.Windows.Forms.Button();
             this.btnDegisken = new System.Windows.Forms.Button();
             this.btnBaslat = new System.Windows.Forms.Button();
+            this.top_panel = new System.Windows.Forms.Panel();
+            this.lblHiz = new System.Windows.Forms.Label();
+            this.trackBarHiz = new System.Windows.Forms.TrackBar();
+            this.btnAc = new System.Windows.Forms.Button();
             this.btnYeni = new System.Windows.Forms.Button();
             this.btnKaydet = new System.Windows.Forms.Button();
+            this.btnDevamEt = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.main_panel.SuspendLayout();
             this.propertPanel.SuspendLayout();
             this.tabControlProperti.SuspendLayout();
@@ -82,10 +82,10 @@
             this.tabDegiskenler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Degiskenler)).BeginInit();
             this.cop_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cop_pictureBox)).BeginInit();
             this.tools_panel.SuspendLayout();
             this.top_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarHiz)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cop_pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // main_panel
@@ -363,6 +363,16 @@
             this.cop_panel.Size = new System.Drawing.Size(242, 197);
             this.cop_panel.TabIndex = 2;
             // 
+            // Cop_pictureBox
+            // 
+            this.Cop_pictureBox.Image = global::Algoritma.Properties.Resources.canclosed;
+            this.Cop_pictureBox.Location = new System.Drawing.Point(77, 58);
+            this.Cop_pictureBox.Name = "Cop_pictureBox";
+            this.Cop_pictureBox.Size = new System.Drawing.Size(100, 94);
+            this.Cop_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cop_pictureBox.TabIndex = 0;
+            this.Cop_pictureBox.TabStop = false;
+            // 
             // tools_panel
             // 
             this.tools_panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -383,78 +393,6 @@
             this.tools_panel.Name = "tools_panel";
             this.tools_panel.Size = new System.Drawing.Size(148, 654);
             this.tools_panel.TabIndex = 1;
-            // 
-            // top_panel
-            // 
-            this.top_panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.top_panel.BackColor = System.Drawing.Color.Turquoise;
-            this.top_panel.Controls.Add(this.lblHiz);
-            this.top_panel.Controls.Add(this.trackBarHiz);
-            this.top_panel.Controls.Add(this.btnAc);
-            this.top_panel.Controls.Add(this.btnYeni);
-            this.top_panel.Controls.Add(this.btnKaydet);
-            this.top_panel.Controls.Add(this.btnDevamEt);
-            this.top_panel.Controls.Add(this.btnRun);
-            this.top_panel.Location = new System.Drawing.Point(1, 1);
-            this.top_panel.Name = "top_panel";
-            this.top_panel.Size = new System.Drawing.Size(963, 54);
-            this.top_panel.TabIndex = 0;
-            // 
-            // lblHiz
-            // 
-            this.lblHiz.AutoSize = true;
-            this.lblHiz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblHiz.Location = new System.Drawing.Point(257, 33);
-            this.lblHiz.Name = "lblHiz";
-            this.lblHiz.Size = new System.Drawing.Size(26, 13);
-            this.lblHiz.TabIndex = 6;
-            this.lblHiz.Text = "0ms";
-            // 
-            // trackBarHiz
-            // 
-            this.trackBarHiz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.trackBarHiz.Location = new System.Drawing.Point(218, 4);
-            this.trackBarHiz.Maximum = 1000;
-            this.trackBarHiz.Name = "trackBarHiz";
-            this.trackBarHiz.Size = new System.Drawing.Size(111, 45);
-            this.trackBarHiz.SmallChange = 5;
-            this.trackBarHiz.TabIndex = 5;
-            this.trackBarHiz.Scroll += new System.EventHandler(this.trackBarHiz_Scroll);
-            // 
-            // btnAc
-            // 
-            this.btnAc.Location = new System.Drawing.Point(51, 8);
-            this.btnAc.Name = "btnAc";
-            this.btnAc.Size = new System.Drawing.Size(39, 36);
-            this.btnAc.TabIndex = 4;
-            this.btnAc.Text = "open";
-            this.btnAc.UseVisualStyleBackColor = true;
-            this.btnAc.Click += new System.EventHandler(this.btnAc_Click);
-            // 
-            // btnDevamEt
-            // 
-            this.btnDevamEt.Location = new System.Drawing.Point(335, 5);
-            this.btnDevamEt.Name = "btnDevamEt";
-            this.btnDevamEt.Size = new System.Drawing.Size(85, 40);
-            this.btnDevamEt.TabIndex = 1;
-            this.btnDevamEt.Text = "|_>";
-            this.btnDevamEt.UseVisualStyleBackColor = true;
-            this.btnDevamEt.Click += new System.EventHandler(this.btnDevamEt_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // Cop_pictureBox
-            // 
-            this.Cop_pictureBox.Image = global::Algoritma.Properties.Resources.canclosed;
-            this.Cop_pictureBox.Location = new System.Drawing.Point(77, 58);
-            this.Cop_pictureBox.Name = "Cop_pictureBox";
-            this.Cop_pictureBox.Size = new System.Drawing.Size(100, 94);
-            this.Cop_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Cop_pictureBox.TabIndex = 0;
-            this.Cop_pictureBox.TabStop = false;
             // 
             // btnDegiskenIzle
             // 
@@ -588,6 +526,54 @@
             this.btnBaslat.UseVisualStyleBackColor = false;
             this.btnBaslat.Click += new System.EventHandler(this.btnBaslat_Click);
             // 
+            // top_panel
+            // 
+            this.top_panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.top_panel.BackColor = System.Drawing.Color.Turquoise;
+            this.top_panel.Controls.Add(this.lblHiz);
+            this.top_panel.Controls.Add(this.trackBarHiz);
+            this.top_panel.Controls.Add(this.btnAc);
+            this.top_panel.Controls.Add(this.btnYeni);
+            this.top_panel.Controls.Add(this.btnKaydet);
+            this.top_panel.Controls.Add(this.btnDevamEt);
+            this.top_panel.Controls.Add(this.btnRun);
+            this.top_panel.Location = new System.Drawing.Point(1, 1);
+            this.top_panel.Name = "top_panel";
+            this.top_panel.Size = new System.Drawing.Size(963, 54);
+            this.top_panel.TabIndex = 0;
+            // 
+            // lblHiz
+            // 
+            this.lblHiz.AutoSize = true;
+            this.lblHiz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblHiz.Location = new System.Drawing.Point(257, 33);
+            this.lblHiz.Name = "lblHiz";
+            this.lblHiz.Size = new System.Drawing.Size(26, 13);
+            this.lblHiz.TabIndex = 6;
+            this.lblHiz.Text = "0ms";
+            // 
+            // trackBarHiz
+            // 
+            this.trackBarHiz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.trackBarHiz.Location = new System.Drawing.Point(218, 4);
+            this.trackBarHiz.Maximum = 1000;
+            this.trackBarHiz.Name = "trackBarHiz";
+            this.trackBarHiz.Size = new System.Drawing.Size(111, 45);
+            this.trackBarHiz.SmallChange = 5;
+            this.trackBarHiz.TabIndex = 5;
+            this.trackBarHiz.Scroll += new System.EventHandler(this.trackBarHiz_Scroll);
+            // 
+            // btnAc
+            // 
+            this.btnAc.Location = new System.Drawing.Point(51, 8);
+            this.btnAc.Name = "btnAc";
+            this.btnAc.Size = new System.Drawing.Size(39, 36);
+            this.btnAc.TabIndex = 4;
+            this.btnAc.Text = "open";
+            this.btnAc.UseVisualStyleBackColor = true;
+            this.btnAc.Click += new System.EventHandler(this.btnAc_Click);
+            // 
             // btnYeni
             // 
             this.btnYeni.BackgroundImage = global::Algoritma.Properties.Resources._new;
@@ -610,6 +596,16 @@
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
+            // btnDevamEt
+            // 
+            this.btnDevamEt.Location = new System.Drawing.Point(335, 5);
+            this.btnDevamEt.Name = "btnDevamEt";
+            this.btnDevamEt.Size = new System.Drawing.Size(85, 40);
+            this.btnDevamEt.TabIndex = 1;
+            this.btnDevamEt.Text = "|_>";
+            this.btnDevamEt.UseVisualStyleBackColor = true;
+            this.btnDevamEt.Click += new System.EventHandler(this.btnDevamEt_Click);
+            // 
             // btnRun
             // 
             this.btnRun.BackgroundImage = global::Algoritma.Properties.Resources.run2;
@@ -621,13 +617,16 @@
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 708);
             this.Controls.Add(this.main_panel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Algoritma";
@@ -642,11 +641,11 @@
             this.tabDegiskenler.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Degiskenler)).EndInit();
             this.cop_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Cop_pictureBox)).EndInit();
             this.tools_panel.ResumeLayout(false);
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarHiz)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cop_pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }

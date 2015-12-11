@@ -31,7 +31,7 @@ namespace Algoritma
            g.DrawString(panelAdi, new Font("Arial", 10), brush, new Point(this.Width / 2 - 8 * panelAdi.Length / 2, this.Height / 2 - 10));
         }
 
-        public override void islemYap(Program p)
+        public override void islemYap(frmConsole p)
         {
            // Thread.Sleep(1000);
             try

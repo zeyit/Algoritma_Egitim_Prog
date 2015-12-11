@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Algoritma
@@ -17,7 +18,7 @@ namespace Algoritma
             this.baslat = baslat;
         }
 
-        public void Calistir(int hiz,bool isDegiskenIzle,DegiskenPenceresi dp)
+        public void Calistir(int hiz,bool isDegiskenIzle,DegiskenPenceresi dp,frmConsole p)
         {
             myPanel aktif = baslat;
             DegiskenListesi degiskenler = new DegiskenListesi();
@@ -29,10 +30,7 @@ namespace Algoritma
             //degisken izle
             int degisken_satir = 0;
 
-            // Start console
-            String[] prams = { "console" };
-        
-            Program p = new Program(prams);
+
             Action actionBorderNone = () => aktif.BorderStyle = BorderStyle.None;
             Action actionBorderFixed = () => aktif.BorderStyle = BorderStyle.FixedSingle;
 
@@ -107,7 +105,6 @@ namespace Algoritma
                        for (int i = 0; i < degisken_deger.Length; i++)
                        {
                            Action ekle = () => { dp.ColumsAdd(degisken_deger[i]); };
-
                            dp.Invoke(ekle);
                        }
                        di.IlkKontrol = false;
@@ -135,7 +132,6 @@ namespace Algoritma
                 aktif = aktif.Next1;
             }
             p.WriteLine("Program Bitti.");
-            Form1.SetThread();
         }
 
     }

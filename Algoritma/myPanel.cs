@@ -102,7 +102,7 @@ namespace Algoritma
            this.next2 = null;
        }
 
-       public virtual void islemYap(Program p)
+       public virtual void islemYap(frmConsole p)
        {
           
        }

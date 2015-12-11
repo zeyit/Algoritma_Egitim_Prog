@@ -16,7 +16,7 @@ namespace Algoritma
 {
     public partial class Form1 : Form
     {
-        static Thread thread;
+        Thread thread;
         bool suruklenme_durumu;
         Point position;
         int nesne_count;
@@ -26,7 +26,8 @@ namespace Algoritma
         DegiskenListesi degisken_listesi;
         String secilen_nesne_adi;
         String SecilenDosyaUrl="";
-        DegiskenPenceresi dp;
+       static frmConsole console;
+       static DegiskenPenceresi dp;
 
         public Form1()
         {
@@ -52,10 +53,6 @@ namespace Algoritma
             }
         }
 
-        public static void SetThread()
-        {
-            thread =null;
-        }
 
         public void mp3_play(String url)
         {
@@ -622,16 +619,12 @@ namespace Algoritma
 
          private void btnDevamEt_Click(object sender, EventArgs e)
          {
-           
-             if (thread != null)
-             {
                  try
                  {
                      thread.Interrupt();
                  }
                  catch (Exception)
                  {}
-             }
          }
 
          public void Kaydet()
@@ -743,7 +736,7 @@ namespace Algoritma
          {
              openFileDialog1.Filter = "Metin dosyaları|*.zyd";
              openFileDialog1.Title = "Açılacak dosyayı seçiniz";
-             System.IO.TextReader dosya;
+             System.IO.TextReader dosya =null;
              string txt="";
              if (url =="")
              {
@@ -763,7 +756,11 @@ namespace Algoritma
                  dosya.Close();
              }
              //verile üzerinde işlem yapma
-             NesneleriYukle(txt);
+             if (dosya !=null)
+             {
+                 NesneleriYukle(txt);
+             }
+             
          }
 
          public void NesneleriYukle(String txt)
@@ -899,25 +896,39 @@ namespace Algoritma
                  if (sekiller[i].GetType() ==typeof(DegiskenIzle))
                  {
                      isDegiskenIzle = true;
-                     if (dp == null)
+                     ((DegiskenIzle)sekiller[i]).IlkKontrol = true;
+
+                     if (dp  == null)
                      {
-                          dp = new DegiskenPenceresi();
-                          dp.Show();
+                          dp = new DegiskenPenceresi();dp.Show();
                      }
                      else
                      {
+                         try
+                         {
+                             dp.Show();
+                         }
+                         catch (Exception)
+                         {
+                             
+                             throw;
+                         }
+                     }
                          dp.dgvDegiskenler.Rows.Clear();
                          dp.dgvDegiskenler.Columns.Clear();
-
-                     }
-
                  }
                  sekiller[i].BorderStyle = BorderStyle.None;
              }
              try
              {
+                 if (console ==null)
+                 {
+                    console = new frmConsole(); 
+                 }
+                 console.rtBTemizle();
+                 console.Show();
                  int hiz = trackBarHiz.Value;
-                 thread = new Thread(() => aa.Calistir(hiz, isDegiskenIzle,dp));
+                 thread = new Thread(() => aa.Calistir(hiz, isDegiskenIzle,dp,console));
                  thread.Start();
                 
              }
