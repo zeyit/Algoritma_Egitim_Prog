@@ -30,7 +30,6 @@ namespace Algoritma
             //degisken izle
             int degisken_satir = 0;
 
-
             Action actionBorderNone = () => aktif.BorderStyle = BorderStyle.None;
             Action actionBorderFixed = () => aktif.BorderStyle = BorderStyle.FixedSingle;
 

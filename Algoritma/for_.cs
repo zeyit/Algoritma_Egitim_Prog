@@ -67,5 +67,36 @@ namespace Algoritma
             brush = System.Drawing.Brushes.White;
             g.DrawString(kararMetni, new Font("Arial", 10), brush, new Point(this.Width / 2 - 7 * kararMetni.Length / 2, this.Height / 2 - 8));
         }
+
+        public override string KodBaslangic(int blokSayisi)
+        {
+            string kod = base.blokSayisiHesapla(blokSayisi);
+            try
+            {
+                string[] for_ifade = this.YapilacakIslem.Split(',');
+                kod += "\t\t\tfor( " + for_ifade[0] + " ; " + for_ifade[1] + " ;";
+                String []for_degisken = for_ifade[0].Split('=');
+                if (for_ifade[2]=="1")
+                {
+                    kod += for_degisken[0] + "++)\n";
+                }
+                else
+                {
+                    kod += for_degisken[0] + "+="+for_ifade[2]+")\n";
+                }
+                kod += base.blokSayisiHesapla(blokSayisi) + "\t\t\t{\n";
+            }
+            catch (Exception)
+            { }
+            return kod;
+        }
+
+        public override string KodBitis(int blokSayisi)
+        {
+            string kod = base.blokSayisiHesapla(blokSayisi);
+            kod += "\t\t\t}\n";
+            return kod;
+        }
+    
     }
 }

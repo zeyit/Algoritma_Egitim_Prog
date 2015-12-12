@@ -30,5 +30,12 @@ namespace Algoritma
             brush = System.Drawing.Brushes.White;
             g.DrawString(degisken, new Font("Arial", 10), brush, new Point(this.Width/2-7*degisken.Length/2, this.Height/2-8));
         }
+
+        public override string KodBaslangic(int blokSayisi)
+        {
+            String kod = base.blokSayisiHesapla(blokSayisi);
+                kod +="\t\t\tint "+this.YapilacakIslem+" ;\n";
+            return kod;
+        }
     }
 }

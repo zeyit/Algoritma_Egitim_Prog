@@ -70,13 +70,32 @@ namespace Algoritma
         {
             try
             {
-                double sayi = p.Read(this.GosterilecekMetin);
+                double sayi=0;
+                sayi = p.Read(this.GosterilecekMetin); 
                 degiskenler.DegiskenDeger(this.DegiskenAdi, sayi);
             }
            catch (Exception)
             {
                 p.ErrWrite("Metinsel ifade girildi");
             }
+        }
+
+        public override string KodBaslangic(int blokSayisi)
+        {
+            String kod = base.blokSayisiHesapla(blokSayisi);
+                kod+="\t\t\tConsole.WriteLine(\"" + this.GosterilecekMetin + "\");\n";
+            if (this.degiskenAdi !="")
+            {
+                kod += "\t\t\t" + base.blokSayisiHesapla(blokSayisi) + degiskenAdi + "  =  ";
+            }
+            else
+            {
+                kod +=base.blokSayisiHesapla(blokSayisi) + "\t\t\t";
+            }
+            kod += base.blokSayisiHesapla(blokSayisi);
+            kod += "Convert.ToInt32(Console.ReadLine());\n";
+            
+            return kod;
         }
     }
 }

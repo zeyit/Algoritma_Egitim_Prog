@@ -28,5 +28,20 @@ namespace Algoritma
             brush = System.Drawing.Brushes.White;
             g.DrawString(panelAdi, new Font("Arial", 10), brush, new Point(this.Width / 2 - 8 * panelAdi.Length / 2, this.Height / 2 - 10));
         }
+
+        public override string KodBaslangic(int blokSayisi)
+        {
+            String kod =   "using System;\n"
+                          +"using System.Collections.Generic;\n"
+                          +"using System.Linq;\n"
+                          +"using System.Text;\n \n"
+                          +"namespace ConsoleApplication\n"
+                          +"{\n"
+                          +"\tclass Program\n"
+                          +"\t{\n"
+                          +"\t\t static void Main(string[] args)\n"
+                          +"\t\t{\n";
+            return kod;
+        }
     }
 }

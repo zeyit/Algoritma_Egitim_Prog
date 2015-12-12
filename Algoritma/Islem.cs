@@ -46,5 +46,14 @@ namespace Algoritma
             }
             catch (Exception) { }
         }
+
+        public override string KodBaslangic(int blokSayisi)
+        {
+            String kod = base.blokSayisiHesapla(blokSayisi);
+                
+                kod+="\t\t\t"+this.YapilacakIslem +" ;\n";
+
+            return kod;
+        }
     }
 }

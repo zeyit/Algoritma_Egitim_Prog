@@ -138,6 +138,12 @@
     <Compile Include="frmConsole.Designer.cs">
       <DependentUpon>frmConsole.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmKodPencere.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKodPencere.Designer.cs">
+      <DependentUpon>frmKodPencere.cs</DependentUpon>
+    </Compile>
     <Compile Include="Giris.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -146,6 +152,7 @@
     </Compile>
     <Compile Include="JsonNesnem.cs" />
     <Compile Include="Karar.cs" />
+    <Compile Include="KodOlustur.cs" />
     <Compile Include="myPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -159,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsole.resx">
       <DependentUpon>frmConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKodPencere.resx">
+      <DependentUpon>frmKodPencere.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

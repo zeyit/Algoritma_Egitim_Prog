@@ -106,5 +106,19 @@ namespace Algoritma
        {
           
        }
+
+       public virtual String KodBaslangic(int blokSayisi){ return "";}
+
+       public virtual String KodBitis(int blokSayisi) { return ""; }
+
+       public string blokSayisiHesapla(int blok)
+       {
+           String tab_say = "";
+           for (int i = 0; i < blok; i++)
+           {
+               tab_say += "\t";
+           }
+           return tab_say;
+       }
     }
 }

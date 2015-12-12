@@ -21,7 +21,7 @@ namespace Algoritma
             base.CbDegiskenGosterilecekMi = true;
             base.MetinGoruntulensinMi = true;
             base.WHGosterilecekMi = true;
-            base.GosterilecekMetin ="\"Sonuç....: \"";
+            base.GosterilecekMetin ="Sonuç....: ";
             degiskenAdi = "";
         }
 
@@ -85,13 +85,29 @@ namespace Algoritma
                 {
                     p.ErrWrite("Değişken Tanımlanmamış");
                 }
-
                 p.WriteLine(this.GosterilecekMetin + " ," + deger);
+               
             }
             else
             {
-                p.Write(this.GosterilecekMetin);
+                p.WriteLine(this.GosterilecekMetin); 
             }
         }
+
+        public override string KodBaslangic(int blokSayisi)
+        {
+            String kod = base.blokSayisiHesapla(blokSayisi);
+                kod +="\t\t\tConsole.WriteLine(\"" + this.GosterilecekMetin;
+            if (degiskenAdi !="")
+            {
+                kod += " , {0} \","+degiskenAdi+");\n";
+            }
+            else
+            {
+                kod += "\");\n";
+            }
+            return kod;
+        }
+
     }
 }

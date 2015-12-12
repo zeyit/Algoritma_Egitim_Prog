@@ -10,7 +10,6 @@ namespace Algoritma
 {
     public class Program
     {
-
         [STAThread]
        public static void Main(String[] args)
         {
@@ -24,7 +23,6 @@ namespace Algoritma
             }
             catch (Exception)
             { }
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
             if (args.Length > 0)
@@ -35,7 +33,6 @@ namespace Algoritma
             {
                 Application.Run(new Form1());
             }
-           
         }
 
     }
